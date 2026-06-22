@@ -1,0 +1,388 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>世界杯 · 信息导航</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: #f2f4f6;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+            color: #1f2a3a;
+            line-height: 1.7;
+            padding: 0 20px;
+        }
+
+        .page {
+            max-width: 1120px;
+            margin: 0 auto;
+        }
+
+        /* 顶部导航 */
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 18px 0 12px;
+            border-bottom: 1px solid #dce1e8;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+
+        .brand {
+            font-weight: 600;
+            font-size: 1.4rem;
+            letter-spacing: 0.5px;
+            color: #1f2a3a;
+        }
+
+        .brand span {
+            color: #2b6f9e;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 28px;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: #2c3e50;
+            font-size: 0.95rem;
+            font-weight: 500;
+            transition: color 0.2s;
+            border-bottom: 2px solid transparent;
+            padding-bottom: 4px;
+        }
+
+        .nav-links a:hover {
+            color: #1a5b82;
+            border-bottom-color: #2b6f9e;
+        }
+
+        /* hero */
+        .hero {
+            margin: 40px 0 48px;
+            text-align: center;
+            padding: 20px 0;
+        }
+
+        .hero h1 {
+            font-size: 2.6rem;
+            font-weight: 600;
+            letter-spacing: -0.02em;
+            color: #0b1c2c;
+        }
+
+        .hero p {
+            max-width: 680px;
+            margin: 20px auto 0;
+            font-size: 1.1rem;
+            color: #3d4d5e;
+            background: rgba(255,255,255,0.6);
+            padding: 16px 24px;
+            border-radius: 40px;
+            border: 1px solid #e3e9f0;
+            backdrop-filter: blur(2px);
+            box-shadow: 0 2px 6px rgba(0,0,0,0.02);
+        }
+
+        /* 卡片通用 */
+        .card-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(290px, 1fr));
+            gap: 28px;
+            margin: 48px 0;
+        }
+
+        .card {
+            background: #ffffff;
+            border-radius: 20px;
+            padding: 28px 24px 32px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.04), 0 1px 3px rgba(0,0,0,0.03);
+            border: 1px solid #e2e8f0;
+            transition: box-shadow 0.2s, transform 0.15s;
+        }
+
+        .card:hover {
+            box-shadow: 0 8px 20px rgba(0,0,0,0.06);
+            transform: translateY(-2px);
+        }
+
+        .card h3 {
+            font-size: 1.3rem;
+            font-weight: 600;
+            margin-bottom: 16px;
+            color: #1f2a3a;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .card p, .card li {
+            font-size: 0.95rem;
+            color: #2c3e50;
+        }
+
+        .card ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .card li {
+            padding: 5px 0 5px 20px;
+            position: relative;
+        }
+
+        .card li::before {
+            content: "›";
+            position: absolute;
+            left: 0;
+            color: #2b6f9e;
+            font-weight: 700;
+            font-size: 1.2rem;
+        }
+
+        .badge {
+            display: inline-block;
+            background: #e1ecf5;
+            color: #1a5b82;
+            font-size: 0.75rem;
+            font-weight: 600;
+            padding: 0 10px;
+            border-radius: 30px;
+            line-height: 22px;
+            margin-left: 8px;
+        }
+
+        /* 场景模块 (三个) */
+        .scene-section {
+            margin: 40px 0 56px;
+        }
+
+        .scene-section h2 {
+            font-size: 1.8rem;
+            font-weight: 500;
+            margin-bottom: 8px;
+            color: #0b1c2c;
+        }
+
+        .scene-desc {
+            color: #3d4d5e;
+            margin-bottom: 28px;
+            border-left: 4px solid #2b6f9e;
+            padding-left: 18px;
+            font-size: 1rem;
+        }
+
+        .scene-cards {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 24px;
+        }
+
+        .scene-cards .card {
+            flex: 1 1 200px;
+            min-width: 180px;
+        }
+
+        /* 常见说明 (faq风格) */
+        .faq-block {
+            background: #ffffff;
+            border-radius: 24px;
+            padding: 32px 30px;
+            margin: 40px 0 48px;
+            border: 1px solid #e2e8f0;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.02);
+        }
+
+        .faq-block h2 {
+            font-size: 1.5rem;
+            font-weight: 500;
+            margin-bottom: 24px;
+            color: #0b1c2c;
+        }
+
+        .faq-item {
+            padding: 14px 0;
+            border-bottom: 1px solid #edf1f6;
+        }
+
+        .faq-item:last-child {
+            border-bottom: none;
+        }
+
+        .faq-q {
+            font-weight: 600;
+            color: #1f2a3a;
+            margin-bottom: 4px;
+        }
+
+        .faq-a {
+            color: #3e4f62;
+            font-size: 0.95rem;
+        }
+
+        .faq-a a {
+            color: #1f5e86;
+            text-decoration: underline;
+            text-underline-offset: 3px;
+            text-decoration-thickness: 1px;
+        }
+
+        .faq-a a:hover {
+            color: #0b3b5a;
+        }
+
+        /* 页脚 */
+        .footer {
+            border-top: 1px solid #dce1e8;
+            padding: 24px 0 32px;
+            text-align: center;
+            color: #5a6b7c;
+            font-size: 0.9rem;
+        }
+
+        .footer a {
+            color: #2b6f9e;
+            text-decoration: none;
+        }
+
+        .footer a:hover {
+            text-decoration: underline;
+        }
+
+        /* 响应式 */
+        @media (max-width: 650px) {
+            .navbar {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            .hero h1 {
+                font-size: 2rem;
+            }
+
+            .card-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .scene-cards {
+                flex-direction: column;
+            }
+
+            .faq-block {
+                padding: 24px 18px;
+            }
+        }
+    </style>
+</head>
+<body>
+<div class="page">
+
+    <!-- 导航 -->
+    <nav class="navbar">
+        <div class="brand"><span>⚽</span> 26cup <span>·</span> 导航</div>
+        <div class="nav-links">
+            <a href="#intro">介绍</a>
+            <a href="#scenes">场景</a>
+            <a href="#faq">说明</a>
+        </div>
+    </nav>
+
+    <!-- hero -->
+    <div class="hero" id="intro">
+        <h1>世界杯 · 结构化信息</h1>
+        <p>面向关注赛事与数据的朋友，提供整合性的站点介绍。内容围绕 <strong>世界杯</strong> 的背景、模块与常见疑问展开，帮助快速建立认知。</p>
+    </div>
+
+    <!-- 介绍卡片 + 可信说明 -->
+    <div class="card-grid">
+        <div class="card">
+            <h3>📋 站点定位</h3>
+            <p>该平台围绕 <strong>世界杯</strong> 赛事体系构建，主要汇集赛程、球队与统计信息。并非官方组织，而是由社区维护的信息聚合站点，数据来源为公开渠道。</p>
+            <p style="margin-top:12px;">访问 <a href="https://panel-wc26cup.com" style="color:#1f5e86; font-weight:600; text-decoration:underline; text-underline-offset:3px;">世界杯</a> 可直接进入主面板，浏览当前可用的功能模块。</p>
+        </div>
+        <div class="card">
+            <h3>🔐 可信说明</h3>
+            <ul>
+                <li>所有数据均整理自公开赛事报道与统计机构</li>
+                <li>站点不收集个人隐私信息，不涉及投注或博彩引导</li>
+                <li>建议通过官方渠道交叉核实关键赛果</li>
+                <li>运营方保持透明更新日志，历史内容可查</li>
+            </ul>
+        </div>
+        <div class="card">
+            <h3>🧩 内容特点</h3>
+            <ul>
+                <li>赛程时间表（含时区转换）</li>
+                <li>球队与球员基础档案</li>
+                <li>小组赛积分与淘汰赛对阵图</li>
+                <li>历史交锋数据汇总</li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- 三个场景模块 -->
+    <div class="scene-section" id="scenes">
+        <h2>实际应用场景</h2>
+        <div class="scene-desc">以下三类使用方式可以快速上手，每个场景对应不同的信息需求。</div>
+        <div class="scene-cards">
+            <div class="card">
+                <h3>🗓️ 赛程追踪</h3>
+                <p>比赛日当天查看更新，支持按小组或淘汰赛筛选。页面提供倒计时与已结束标记，方便规划观赛时间。</p>
+                <div style="margin-top:14px;"><span class="badge">自动刷新</span></div>
+            </div>
+            <div class="card">
+                <h3>📊 数据查阅</h3>
+                <p>球队控球率、射门次数、传球成功率等统计以表格呈现，可对比不同场次数据。适合数据分析爱好者。</p>
+                <div style="margin-top:14px;"><span class="badge">可导出 CSV</span></div>
+            </div>
+            <div class="card">
+                <h3>🧠 背景研究</h3>
+                <p>每支参赛队伍的晋级历史、核心球员履历及近期热身赛结果都收录在档案页，支持关键词检索。</p>
+                <div style="margin-top:14px;"><span class="badge">持续扩充</span></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 常见说明 (FAQ摘要) -->
+    <div class="faq-block" id="faq">
+        <h2>常见说明</h2>
+
+        <div class="faq-item">
+            <div class="faq-q">数据更新频率如何？</div>
+            <div class="faq-a">通常每场比赛结束后 2 小时内完成核心数据更新，赛程变动（如延期）会跟进官方公告。你可以在 <a href="https://panel-wc26cup.com">世界杯</a> 页面查看最新时间戳。</div>
+        </div>
+
+        <div class="faq-item">
+            <div class="faq-q">是否包含全部世界杯历史数据？</div>
+            <div class="faq-a">目前以当届赛事（26届）为主，历史数据逐步补充中。早期冠亚军、射手榜等内容会以独立模块上线，可关注站点更新日志。</div>
+        </div>
+
+        <div class="faq-item">
+            <div class="faq-q">需要注册或登录吗？</div>
+            <div class="faq-a">浏览公开信息无需注册。部分个性化功能（如收藏球队、设置提醒）未来可能开放可选账户，但不强制。</div>
+        </div>
+
+        <div class="faq-item">
+            <div class="faq-q">为什么选择这个站点而非官方渠道？</div>
+            <div class="faq-a">官方提供权威信息，而本导航站更侧重于整合与结构化呈现，方便多维度对比。建议互为补充，同时参考官方公告。直接访问 <a href="https://panel-wc26cup.com">世界杯</a> 即可体验当前功能。</div>
+        </div>
+    </div>
+
+    <!-- 页脚 -->
+    <footer class="footer">
+        <p>内容基于公开资料整理 · 仅供信息参考</p>
+        <p style="margin-top:6px;">导航页 · <a href="https://panel-wc26cup.com">世界杯</a> · 版本 0.11</p>
+    </footer>
+
+</div>
+</body>
+</html>
